@@ -3,13 +3,14 @@ app.controller('ProfileController', [
   '$rootScope',
   '$state',
   '$stateParams',
-  function($scope, $rootScope, $state, $stateParams) {
+  'User',
+  function($scope, $rootScope, $state, $stateParams, User) {
 
     $scope.done = function() {
-      $rootScope.user.wakeUpTime = $scope.user. wakeUpTime;
-      console.log("done", $rootScope.user.wakeUpTime);
-      $state.go('profile.questions', {'user': $stateParams.user});
+      User.setTime($scope.user.data.wakeUpTime);
+      User.saveTime($scope.user.uid, $scope.user.data.wakeUpTime);
     };
+
 
   }
 ]);

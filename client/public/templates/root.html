@@ -1,2 +1,4 @@
 <h1 class="root">Root</h1>
-<button ng-click="loginTwitter()">Login w Twitter</button>
+<button ng-click="loginTwitter()" ng-hide="hide_login">Login w Twitter</button>
+<h2 ng-if="user.data.wakeUpTime">Alarm Set: {{user.data.wakeUpTime}}</h2>
+<section ui-view></section>

@@ -13,15 +13,15 @@ var app = angular.module('app', [
             templateUrl: 'templates/root.html',
             controller: 'RootController'
         })          
-        .state('profile', {
-            url: '/profile/:user',
+        .state('root.profile', {
+            url: 'profile',
             templateUrl: 'templates/profile.html',
             controller: 'ProfileController'
         })          
-        .state('profile.questions', {
-            url: '/questions',
-            templateUrl: 'templates/questions.html',
-            controller: 'QuestionsController'
+        .state('root.survey', {
+            url: 'survey',
+            templateUrl: 'templates/survey.html',
+            controller: 'SurveyController'
         })                      
         ;
 });
