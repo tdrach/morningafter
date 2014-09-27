@@ -12,6 +12,16 @@ var app = angular.module('app', [
             url: '/',
             templateUrl: 'templates/root.html',
             controller: 'RootController'
+        })          
+        .state('profile', {
+            url: '/profile/:user',
+            templateUrl: 'templates/profile.html',
+            controller: 'ProfileController'
+        })          
+        .state('profile.questions', {
+            url: '/questions',
+            templateUrl: 'templates/questions.html',
+            controller: 'QuestionsController'
         })                      
         ;
 });

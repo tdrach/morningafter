@@ -12,6 +12,16 @@ var app = angular.module('app', [
             url: '/',
             templateUrl: 'templates/root.html',
             controller: 'RootController'
+        })          
+        .state('profile', {
+            url: '/profile/:user',
+            templateUrl: 'templates/profile.html',
+            controller: 'ProfileController'
+        })          
+        .state('profile.questions', {
+            url: '/questions',
+            templateUrl: 'templates/questions.html',
+            controller: 'QuestionsController'
         })                      
         ;
 });
@@ -21,12 +31,46 @@ var app = angular.module('app', [
 
 
 
-;app.controller('RootController', [
+;app.controller('ProfileController', [
+  '$scope',
+  '$rootScope',
+  '$state',
+  '$stateParams',
+  function($scope, $rootScope, $state, $stateParams) {
+
+    $scope.done = function() {
+      $rootScope.user.wakeUpTime = $scope.user. wakeUpTime;
+      console.log("done", $rootScope.user.wakeUpTime);
+      $state.go('profile.questions', {'user': $stateParams.user});
+    };
+
+  }
+]);;app.controller('QuestionsController', [
+  '$scope',
+  '$rootScope',
+  '$state',
+  function($scope, $rootScope, $state) {
+
+    
+
+  }
+]);;app.controller('RootController', [
   '$scope',
   '$rootScope',
   '$state',
   function($scope, $rootScope, $state) {
     $scope.mobile = window.mobilecheck();
+    $rootScope.FIREBASE_URL = "https://morningafter.firebaseio.com/";
+    $rootScope.FIREBASE_REF__users = new Firebase("https://morningafter.firebaseio.com/users");
+
+
+    $scope.loginTwitter = function() {
+      var authClient = new FirebaseSimpleLogin($rootScope.FIREBASE_REF__users, function(error, user) {
+        $rootScope.user = user;
+        $state.go("profile", {'user': user.uid});
+      });
+        authClient.login('twitter');
+    };
 
   }
 ]);;(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
