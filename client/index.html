@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="app" ng-controller="AppController">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <head>
+        <title>Day After Alarm Clock</title>
+        <meta name="description" content="A tool for problems.">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="prefetch" href="">
+        <link rel="icon" type="image/png" href="img/logo.png" />    
+        <meta property="og:site_name" content="Day After"/>
+        <meta property="og:description" content="The real alarm clock."/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Day After" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+        <script type="text/javascript" src="//use.typekit.net/phl1kvo.js"></script> 
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    </head>
+    <body ng-class="{'is-not-mobile': !mobile, 'is-mobile': mobile, 'is-root': $state.current.name === 'root'}"> 
+
+        <section class="main" ui-view>        
+        </section>
+        
+        <!-- // <script src="/js/get.js"></script> -->
+
+        <!-- CDN shtuff -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-touch.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+        <script src="https://cdn.firebase.com/js/simple-login/1.6.3/firebase-simple-login.js"></script> 
+        
+        <!-- Compiled build -->
+        <script src="/js/build.js"></script>
+
+    </body>
+</html>

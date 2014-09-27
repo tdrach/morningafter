@@ -1,0 +1,114 @@
+// The role of the config sass file is two fold. Adjust !defaults as set in lower level modules
+// and to set theme variables.
+
+// Typically, commented out variables signify a !default setting at a
+// lower level module.
+
+
+
+// CSS3 defaults
+// *-------------------------------------------------------------------------------
+$default-box-sizing: border-box;
+
+
+/////// Typography configuration
+// *-------------------------------------------------------------------------------
+$font_size: 16px;
+
+$kilo: 6.4rem;
+$alpha: 3.5rem;
+$beta: 2.5rem;
+$gamma: 1.5rem;
+$normal: .9rem;
+$baby: .75rem;
+
+$line_multiple: 1.363636364;
+$line_multiple_small_baseline: 30/13.75;
+$line_multiple_small: 1.090909091;
+
+$line: $gamma * $line_multiple;
+
+$primary_font_family: #{"ff-meta-web-pro", "DINBek-Regular", Avenir, Helvetica, Arial, serif};
+$caps_font_family: #{"ff-meta-sc-web-pro", "DINBek-Regular", Avenir, Helvetica, Arial, serif};
+
+$spacing_unit: $line;
+
+/////// Colors
+// *-------------------------------------------------------------------------------
+
+$white: #fff;
+
+$color-font: $white;
+$color-fontInverse: #333333;
+$color-lightGray--border: #fafafa;
+$color-lightBlue--bgGradient: #5CDAEB;
+$color-mediumBlue--bgGradient: #85ACFA;
+$color-pink--bgGradient: #F853FF;
+
+
+// $color-grayLight--background: ;
+
+
+/////// @media breakpoint defaults
+// *-------------------------------------------------------------------------------
+$tablet:                    "screen and (max-width: 64em)";
+$tablet_portrait:           "screen and (max-width: 50em) and (orientation: portrait)";
+$tablet_landscape:          "screen and (max-width: 50em) and (orientation: landscape)";
+
+$mobile:                    "screen and (max-width: 40em)";
+$mobile_portrait:           "screen and (max-width: 40em) and (orientation : portrait)";
+$mobile_landscape:          "screen and (max-width: 40em) and (orientation : landscape)";
+
+$device--smallest: 30em;
+
+//// Z-Index
+
+$z-0: 0;
+$z-1: 100;
+$z-2: 200;
+$z-3: 300;
+$z-4: 400;
+$z-5: 500;
+$z-6: 600;
+$z-7: 700;
+$z-8: 800;
+$z-9: 900;
+
+
+$cubic_1: cubic-bezier(0,.97,1,.51);
+$cubic_2: cubic-bezier(.79,.19,.47,.99);
+$cubic_3: cubic-bezier(.92,.16,.29,.94);
+$cubic_4: cubic-bezier(.75,.34,.83,.97);
+
+// Images
+
+$S3: "http://d3lekc888z8nrs.cloudfront.net/";
+
+// $image-ggBridge: $S3 + "golden-gate-bridge.jpg";
+$image-ggBridge: "../img/golden-gate-bridge.jpg";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
