@@ -28,16 +28,29 @@ app.service('User', function($rootScope, $state, $firebase) {
           $rootScope.FIREBASE_REF__users.child(userId).update({
               'wakeUpTime': wakeUpTime
           }, function() {
-            $state.go("root.survey");
+            $state.go("root.importance");
           });
         } else {
           $rootScope.FIREBASE_REF__users.child(userId).push({
               'wakeUpTime': wakeUpTime
           }, function(){
-            $state.go("root.survey");
+            $state.go("root.importance");
           }); 
         }
       });
+    },
+
+    User.saveEx = function(userId, ex) {
+      User.ex = ex;
+      var usersRef = new Firebase("https://morningafter.firebaseio.com/users");
+        $rootScope.FIREBASE_REF__users.child(userId).update({
+            'ex': {
+              'name': ex.name,
+              'number': ex.number
+            }
+        }, function() {
+          $state.go("root.exPrep");
+        });
     }
 
     return User;

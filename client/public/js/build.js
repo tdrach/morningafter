@@ -6,21 +6,47 @@ var app = angular.module('app', [
     'firebase'
 ]).config(function($urlRouterProvider, $stateProvider, $httpProvider, $anchorScrollProvider, $locationProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when('/', '/welcome');
+    $urlRouterProvider.otherwise('/welcome');
     $stateProvider
         .state('root', {
             url: '/',
             templateUrl: 'templates/root.html',
             controller: 'RootController'
         })          
+        .state('root.welcome', {
+            url: 'welcome',
+            templateUrl: 'templates/welcome.html',
+            controller: 'RootController'
+        })         
+        .state('root.auth', {
+            url: 'auth',
+            templateUrl: 'templates/auth.html',
+            controller: 'RootController'
+        })          
         .state('root.profile', {
             url: 'profile',
             templateUrl: 'templates/profile.html',
             controller: 'ProfileController'
-        })          
-        .state('root.survey', {
-            url: 'survey',
-            templateUrl: 'templates/survey.html',
+        })         
+        .state('root.importance', {
+            url: 'importance',
+            templateUrl: 'templates/importance.html',
+            controller: 'ProfileController'
+        })         
+        .state('root.exInfo', {
+            url: 'exInfo',
+            templateUrl: 'templates/exInfo.html',
+            controller: 'SurveyController'
+        })         
+        .state('root.exPrep', {
+            url: 'exPrep',
+            templateUrl: 'templates/exPrep.html',
+            controller: 'SurveyController'
+        })         
+        .state('root.goodnight', {
+            url: 'goodnight',
+            templateUrl: 'templates/goodnight.html',
             controller: 'SurveyController'
         })                      
         ;
@@ -45,6 +71,13 @@ var app = angular.module('app', [
     };
 
 
+    $scope.saveImportance = function() {
+      $state.go("root.exInfo");
+      // User.saveImportance($scope.user.uid, $scope.user.uid.importance);
+      // console.log(importance);
+      // User.saveImportance($scope.user.uid, $scope.user.data.importance);
+    }
+
   }
 ]);;app.controller('RootController', [
   '$scope',
@@ -57,6 +90,8 @@ var app = angular.module('app', [
     $rootScope.FIREBASE_URL = "https://morningafter.firebaseio.com/";
     $rootScope.FIREBASE_REF__users = new Firebase("https://morningafter.firebaseio.com/users");
 
+    $scope.hide_logout = true;
+
     var authClient = new FirebaseSimpleLogin($rootScope.FIREBASE_REF__users, function(error, user) {
       if (error) {
         console.log(error);
@@ -67,12 +102,20 @@ var app = angular.module('app', [
         var sync = $firebase($rootScope.FIREBASE_REF__users.child(user.uid));
         $scope.user.data = sync.$asObject();
         $scope.hide_login = true;
+        $scope.hide_logout = false;
         $state.go("root.profile");        
       }
     });
 
     $scope.loginTwitter = function() {
         authClient.login('twitter');
+    };
+
+    $scope.logout = function() {
+      authClient.logout();
+      $scope.hide_login = false;
+      $scope.hide_logout = true;
+      $state.go("root");
     };
 
   }
@@ -83,21 +126,11 @@ var app = angular.module('app', [
   'User',
   function($scope, $rootScope, $state, User) {    
 
-    $scope.questions = [
-      {
-        "prompt": "What is your worst exes name?",
-        "answer": ""
-      },      
-      {
-        "prompt": "Social?",
-        "answer": ""
-      },      
-      {
-        "prompt": "Political affiliation?",
-        "answer": ""
-      }
+    $scope.ex = User.ex;
 
-    ];
+    $scope.saveEx = function() {
+      User.saveEx($scope.user.uid, $scope.ex);
+    };
 
 
 
@@ -139,16 +172,29 @@ return check;
           $rootScope.FIREBASE_REF__users.child(userId).update({
               'wakeUpTime': wakeUpTime
           }, function() {
-            $state.go("root.survey");
+            $state.go("root.importance");
           });
         } else {
           $rootScope.FIREBASE_REF__users.child(userId).push({
               'wakeUpTime': wakeUpTime
           }, function(){
-            $state.go("root.survey");
+            $state.go("root.importance");
           }); 
         }
       });
+    },
+
+    User.saveEx = function(userId, ex) {
+      User.ex = ex;
+      var usersRef = new Firebase("https://morningafter.firebaseio.com/users");
+        $rootScope.FIREBASE_REF__users.child(userId).update({
+            'ex': {
+              'name': ex.name,
+              'number': ex.number
+            }
+        }, function() {
+          $state.go("root.exPrep");
+        });
     }
 
     return User;

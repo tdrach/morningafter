@@ -1,3 +1,113 @@
+.main {
+  max-width: 32em;
+  margin: auto;
+  @include rem(margin-top, 2rem);
+  // position: relative;
+  // min-height: 100%;
+}
+
 .root {
   color: blue;
 }
+
+input {
+  background-color: transparent;
+  border: 1px solid $color-font;
+  font-family: $primary_font_family;
+  font-weight: 700;
+  @include rem(font-size, $gamma);
+  color: $color-font;
+  padding: .5em 1em;
+  width: 100%;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+}
+
+button {
+  width: 100%;
+  margin: 0;
+  margin-top: .5em;
+  background-color: $color-font;
+  color: $color-main;
+  border: none;
+  -webkit-display: none;
+  @include rem(font-size, $gamma);
+  font-weight: 700;
+  padding: 1em 2em;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    // border-bottom: 2px solid rgba(darken($color-font, 3%), 0.3);
+  }
+}
+
+.logout {
+  background-color: transparent;
+  color: $color-font;
+  @include rem(font-size, $normal);
+  @include rem(margin-top, $normal*3);
+  padding: 0;
+  opacity: 0.3;
+  text-align: left;
+}
+
+.radio {
+  display: none;
+}
+
+.radio:checked + label {
+  border: 2px solid rgba($white, 0.9);
+}
+
+.radio-label {
+  @include rem(font-size, $gamma);
+  margin: .5em 0;
+  font-weight: 700;
+  display: block;
+  width: 100%;
+  padding: 1em 1em;
+  color: $color-main;
+  background-color: $color-font;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bacon-img {
+  width: 30rem;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  z-index: -1;
+}
+
+.pos-loner {
+  @include rem(margin-top, 11rem);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

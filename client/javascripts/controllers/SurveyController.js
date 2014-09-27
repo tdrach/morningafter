@@ -5,21 +5,11 @@ app.controller('SurveyController', [
   'User',
   function($scope, $rootScope, $state, User) {    
 
-    $scope.questions = [
-      {
-        "prompt": "What is your worst exes name?",
-        "answer": ""
-      },      
-      {
-        "prompt": "Social?",
-        "answer": ""
-      },      
-      {
-        "prompt": "Political affiliation?",
-        "answer": ""
-      }
+    $scope.ex = User.ex;
 
-    ];
+    $scope.saveEx = function() {
+      User.saveEx($scope.user.uid, $scope.ex);
+    };
 
 
 

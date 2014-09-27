@@ -12,5 +12,12 @@ app.controller('ProfileController', [
     };
 
 
+    $scope.saveImportance = function() {
+      $state.go("root.exInfo");
+      // User.saveImportance($scope.user.uid, $scope.user.uid.importance);
+      // console.log(importance);
+      // User.saveImportance($scope.user.uid, $scope.user.data.importance);
+    }
+
   }
 ]);

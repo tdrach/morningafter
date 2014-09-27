@@ -58,11 +58,25 @@ body {
   width: 100%;
   overflow-x: hidden;
   margin: 0;
-  padding: 0;
+  padding: 2em;
   font-family: $primary_font_family;
   font-size: 100%;
   min-height: 100%;
   overflow-y: scroll;
+  background-color: $color-main;
+  color: $color-font;
+}
+
+h1 {
+  @include rem(margin-bottom, 1rem);
+  @include rem(font-size, $alpha);
+  font-weight: 700;
+}
+
+h2 {
+  @include rem(margin-bottom, 2rem);
+  @include rem(font-size, $gamma);
+  font-weight: 700;
 }
 
 h1, h2, h3,
@@ -82,6 +96,29 @@ a {
   }
 }
 
+::-webkit-input-placeholder {
+   color: rgba($color-font, 0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba($color-font, 0.5);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba($color-font, 0.5);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba($color-font, 0.5);  
+}
+
+p {
+  background-color: $color-font;
+  color: $color-main;
+  padding: 1em;
+  @include rem(font-size, $gamma);
+  font-weight: 700;
+}
 
 
 
