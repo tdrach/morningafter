@@ -51,8 +51,7 @@ body {
   font-family: "ff-meta-web-pro", "DINBek-Regular", Avenir, Helvetica, Arial, serif;
   font-size: 100%;
   min-height: 100%;
-  overflow-y: scroll;
-  color: #fff; }
+  overflow-y: scroll; }
   body:before, body:after {
     content: " ";
     display: table; }
