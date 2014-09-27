@@ -51,6 +51,11 @@ button {
   }
 }
 
+button.inverse {
+  color: $color-font;
+  background-color: $color-main;
+}
+
 .logout {
   background-color: transparent;
   color: $color-font;
@@ -93,10 +98,23 @@ button {
   z-index: -1;
 }
 
+.egg-img {
+  // width: 30rem;
+  // position: fixed;
+  // right: 0;
+  // top: 30%;
+  // z-index: -1;
+  // height: 80%;
+}
+
 .pos-loner {
   @include rem(margin-top, 11rem);
 }
 
+.is-inverse {
+  background-color: $color-font;
+  color: $color-main;
+}
 
 
 

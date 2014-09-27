@@ -117,6 +117,7 @@ p {
   color: $color-main;
   padding: 1em;
   @include rem(font-size, $gamma);
+  @include rem(margin-bottom, $gamma);
   font-weight: 700;
 }
 

@@ -48,6 +48,51 @@ var app = angular.module('app', [
             url: 'goodnight',
             templateUrl: 'templates/goodnight.html',
             controller: 'SurveyController'
+        })         
+        .state('root.wakeup', {
+            url: 'wakeup',
+            templateUrl: 'templates/wakeup.html',
+            controller: 'WakeupController'
+        })         
+        .state('root.start', {
+            url: 'start',
+            templateUrl: 'templates/itsTime.html',
+            controller: 'WakeupController'
+        })        
+        .state('root.forget', {
+            url: 'forget',
+            templateUrl: 'templates/forget.html',
+            controller: 'WakeupController'
+        })         
+        .state('root.quiz', {
+            url: 'quiz',
+            templateUrl: 'templates/quiz.html',
+            controller: 'WakeupController'
+        })         
+        .state('root.q1', {
+            url: 'q1',
+            templateUrl: 'templates/q1.html',
+            controller: 'WakeupController'
+        })          
+        .state('root.q2', {
+            url: 'q2',
+            templateUrl: 'templates/q2.html',
+            controller: 'WakeupController'
+        })           
+        .state('root.q3', {
+            url: 'q3',
+            templateUrl: 'templates/q3.html',
+            controller: 'WakeupController'
+        })           
+        .state('root.gotcha', {
+            url: 'gotcha',
+            templateUrl: 'templates/gotcha.html',
+            controller: 'WakeupController'
+        })         
+        .state('root.done', {
+            url: 'done',
+            templateUrl: 'templates/done.html',
+            controller: 'WakeupController'
         })                      
         ;
 });
@@ -57,7 +102,16 @@ var app = angular.module('app', [
 
 
 
-;app.controller('ProfileController', [
+;app.controller('GlobalController', [
+  '$scope',
+  '$rootScope',
+  '$state',
+  '$firebase',
+  'User',
+  function($scope, $rootScope, $state, $firebase, User) {
+    $scope.$state = $state;
+  }
+]);;app.controller('ProfileController', [
   '$scope',
   '$rootScope',
   '$state',
@@ -95,6 +149,7 @@ var app = angular.module('app', [
     var authClient = new FirebaseSimpleLogin($rootScope.FIREBASE_REF__users, function(error, user) {
       if (error) {
         console.log(error);
+        $state.go("root.welcome");
       } else if (user) {
         User.set(user);
         $scope.user = user;       
@@ -103,7 +158,11 @@ var app = angular.module('app', [
         $scope.user.data = sync.$asObject();
         $scope.hide_login = true;
         $scope.hide_logout = false;
-        $state.go("root.profile");        
+        if($state.current.name === "root.wakeup") {
+          return;
+        } else {
+          $state.go("root.profile");
+        }
       }
     });
 
@@ -134,6 +193,15 @@ var app = angular.module('app', [
 
 
 
+  }
+]);;app.controller('WakeupController', [
+  '$scope',
+  '$rootScope',
+  '$state',
+  '$firebase',
+  'User',
+  function($scope, $rootScope, $state, $firebase, User) {
+    console.log($scope.user);
   }
 ]);;(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);

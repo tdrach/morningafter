@@ -14,6 +14,7 @@ app.controller('RootController', [
     var authClient = new FirebaseSimpleLogin($rootScope.FIREBASE_REF__users, function(error, user) {
       if (error) {
         console.log(error);
+        $state.go("root.welcome");
       } else if (user) {
         User.set(user);
         $scope.user = user;       
@@ -22,7 +23,11 @@ app.controller('RootController', [
         $scope.user.data = sync.$asObject();
         $scope.hide_login = true;
         $scope.hide_logout = false;
-        $state.go("root.profile");        
+        if($state.current.name === "root.wakeup") {
+          return;
+        } else {
+          $state.go("root.profile");
+        }
       }
     });
 

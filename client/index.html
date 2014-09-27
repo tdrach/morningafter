@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="app" ng-controller="GlobalController">
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <head>
         <title>Day After Alarm Clock</title>
@@ -19,7 +19,7 @@
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     </head>
-    <body ng-class="{'is-not-mobile': !mobile, 'is-mobile': mobile, 'is-root': $state.current.name === 'root'}"> 
+    <body ng-class="{'is-not-mobile': !mobile, 'is-mobile': mobile, 'is-root': $state.current.name === 'root', 'is-inverse': $state.current.name ==='root.wakeup' || $state.current.name === 'root.done'}"> 
 
         <section class="main" ui-view>        
         </section>

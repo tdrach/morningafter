@@ -103,6 +103,8 @@ p {
   padding: 1em;
   font-size: 24px;
   font-size: 1.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-weight: 700; }
 
 .main {
@@ -145,6 +147,10 @@ button {
     cursor: pointer;
     opacity: 0.9; }
 
+button.inverse {
+  color: #FF5700;
+  background-color: #FFCE16; }
+
 .logout {
   background-color: transparent;
   color: #FF5700;
@@ -183,8 +189,13 @@ button {
   top: 30%;
   z-index: -1; }
 
+
 .pos-loner {
   margin-top: 176px;
   margin-top: 11rem; }
+
+.is-inverse {
+  background-color: #FF5700;
+  color: #FFCE16; }
 
 @media screen and (max-width: 30em) { }
