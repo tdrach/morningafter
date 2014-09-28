@@ -113,6 +113,25 @@ p {
   margin-top: 32px;
   margin-top: 2rem; }
 
+.trans.ng-enter, .trans.ng-leave {
+  -webkit-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  transition: all 2s ease; }
+.trans.ng-enter {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%); }
+.trans.ng-leave, .trans.ng-leave-active {
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%); }
+
 .root {
   color: blue; }
 
